@@ -29,7 +29,7 @@ from util import (
 __all__ = []
 __version__ = 0.2
 __date__ = "2014-11-01"
-__updated__ = "2022-08-09"
+__updated__ = "2023-08-13"
 
 DEBUG = 0
 TESTRUN = 0
@@ -165,16 +165,10 @@ def main(argv=None):
         # process options
         opts = parser.parse_args(argv)
 
-        if opts.dirname is None or opts.host is None:
-            raise Exception(
-                "\n".join(
-                    [
-                        "Usage: python %s -d directory -H hostname [-o output -r]"
-                        % (program_name),
-                        "For more information run %s --help\n" % (program_name),
-                    ]
-                )
-            )
+        if opts.dirname is None:
+            opts.dirname = "."
+        if opts.host is None:
+            opts.host = http://localhost:8080
 
         if not os.path.isdir(opts.dirname) or not os.path.exists(opts.dirname):
             raise Exception(
